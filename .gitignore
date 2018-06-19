@@ -1,0 +1,14 @@
+# Godot-specific ignores
+.import/
+*.import
+
+test.tscn
+export.cfg
+export_presets.cfg
+addons/kakoeimon.braintree/*.os
+# Mono-specific ignores
+.mono/
+
+# System/tool-specific ignores
+.directory
+*~
