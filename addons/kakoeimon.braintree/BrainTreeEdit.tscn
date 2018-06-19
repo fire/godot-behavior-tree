@@ -63,7 +63,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 popup_exclusive = false
-items = [ "Selector", null, true, false, false, 0, 0, null, "", false, "Sequence", null, true, false, false, 1, 0, null, "", false, "StatefulSelector", null, true, false, false, 2, 0, null, "", false, "MemSequence", null, true, false, false, 3, 0, null, "", false, "ParallelSequence", null, true, false, false, 4, 0, null, "", false, "Succeeder", null, true, false, false, 5, 0, null, "", false, "Failer", null, true, false, false, 6, 0, null, "", false, "Inverter", null, true, false, false, 7, 0, null, "", false, "Repeater", null, true, false, false, 8, 0, null, "", false, "UntilSuccess", null, true, false, false, 9, 0, null, "", false, "UntilFailure", null, true, false, false, 10, 0, null, "", false, "Action", null, true, false, false, 11, 0, null, "", false ]
+items = [ "Selector", null, 1, false, false, 0, 0, null, "", false, "Sequence", null, 1, false, false, 1, 0, null, "", false, "StatefulSelector", null, 1, false, false, 2, 0, null, "", false, "MemSequence", null, 1, false, false, 3, 0, null, "", false, "ParallelSequence", null, 1, false, false, 4, 0, null, "", false, "Succeeder", null, 1, false, false, 5, 0, null, "", false, "Failer", null, 1, false, false, 6, 0, null, "", false, "Inverter", null, 1, false, false, 7, 0, null, "", false, "Repeater", null, 1, false, false, 8, 0, null, "", false, "UntilSuccess", null, 1, false, false, 9, 0, null, "", false, "UntilFailure", null, 1, false, false, 10, 0, null, "", false, "Action", null, 1, false, false, 11, 0, null, "", false ]
 hide_on_state_item_selection = false
 _sections_unfolded = [ "Popup", "Rect", "Size Flags" ]
 

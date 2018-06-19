@@ -1,9 +1,12 @@
 tool
 extends GraphNode
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+
+class CustomYSorter:
+	static func sortY(a, b):
+		if a.y < b.y:
+			return true
+		return false
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -18,8 +21,13 @@ func _ready():
 func get_dict(graph):
 	var dict = {"type":0, "x": offset.x, "y": offset.y, "children": []}
 	var list = graph.get_connection_list()
-	#var childs_to_add = []
+	var childs_to_add = []
 	for con in list:
 		if con["from"] == name:
-			dict.children.append(graph.get_node(con["to"]).get_dict(graph))
+			childs_to_add.append(graph.get_node(con["to"]).get_dict(graph))
+			#dict.children.append(graph.get_node(con["to"]).get_dict(graph))
+	childs_to_add.sort_custom(CustomYSorter, "sortY")
+	for c in childs_to_add:
+		dict.children.append(c)
+	
 	return dict
