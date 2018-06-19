@@ -29,7 +29,7 @@ BrainTree/dict = {
 } ],
 "type": 5,
 "x": 460.0,
-"y": 240.0
+"y": 220.0
 }, {
 "children": [ {
 "function_name": "test",
@@ -38,8 +38,23 @@ BrainTree/dict = {
 "y": 368.0
 } ],
 "type": 2,
-"x": 460.0,
-"y": 420.0
+"x": 440.0,
+"y": 400.0
+}, {
+"children": [ {
+"function_name": "test",
+"type": 11,
+"x": 664.0,
+"y": 490.0
+}, {
+"function_name": "test",
+"type": 11,
+"x": 671.0,
+"y": 666.0
+} ],
+"type": 4,
+"x": 380.0,
+"y": 500.0
 } ],
 "type": 1,
 "x": 160.0,
