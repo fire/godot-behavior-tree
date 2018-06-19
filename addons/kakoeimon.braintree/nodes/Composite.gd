@@ -18,7 +18,7 @@ func _ready():
 func get_dict(graph):
 	var dict = {"type":0, "x": offset.x, "y": offset.y, "children": []}
 	var list = graph.get_connection_list()
-	#print(list)
+	#var childs_to_add = []
 	for con in list:
 		if con["from"] == name:
 			dict.children.append(graph.get_node(con["to"]).get_dict(graph))

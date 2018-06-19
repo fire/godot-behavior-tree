@@ -14,6 +14,7 @@ func _ready():
 		brain.update()
 	
 	print(OS.get_ticks_msec() - time)
+	get_node("GodotBrainTree").queue_free()
 
 func test():
 	#print("test")

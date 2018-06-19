@@ -39,8 +39,6 @@ void GodotBrainTree::setup()
         auto node = getFromDict(dict);
         tree.setRoot(node);
     }
-
-    
     
 }
 

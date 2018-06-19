@@ -3,7 +3,6 @@
 
 #include "Godot.hpp"
 #include "Node.hpp"
-//#include "Dictionary.hpp"
 
 
 
@@ -21,8 +20,6 @@ public:
 
     void setup();
     void update();
-
-    void set_child(BrainTree::Sequence *, godot::Dictionary);
 
     BrainTree::Node::Ptr getFromDict(godot::Dictionary);
 

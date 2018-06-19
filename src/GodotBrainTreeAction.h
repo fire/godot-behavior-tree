@@ -1,11 +1,8 @@
 #ifndef GODOTBRAINTREEACTION_H
 #define GODOTBRAINTREEACTION_H
 
-#include "Godot.hpp"
-#include "Node.hpp"
 #include "BrainTree.h"
 #include "GodotBrainTree.h"
-//#include "Dictionary.hpp"
 
 
 
@@ -19,7 +16,6 @@ public:
 
     Status update() override
     {
-        //printf("\nACTION\n");
         int s = owner->owner->get_parent()->call(func_name);
         switch(s){
             case 0:
