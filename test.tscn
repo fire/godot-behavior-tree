@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://test.gd" type="Script" id=1]
+[ext_resource path="res://addons/kakoeimon.braintree/GodotBrainTree.tscn" type="PackedScene" id=2]
+
+[node name="Node" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="GodotBrainTree" parent="." index="0" instance=ExtResource( 2 )]
+
+BrainTree/dict = {
+"children": [ {
+"children": [ {
+"function_name": "test",
+"type": 11,
+"x": 760.0,
+"y": 120.0
+} ],
+"type": 1,
+"x": 440.0,
+"y": 100.0
+}, {
+"children": [ {
+"function_name": "test",
+"type": 11,
+"x": 743.0,
+"y": 368.0
+} ],
+"type": 1,
+"x": 469.0,
+"y": 365.0
+} ],
+"type": 1,
+"x": 180.0,
+"y": 200.0
+}
+
+

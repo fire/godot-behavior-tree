@@ -1,0 +1,10 @@
+[gd_resource type="NativeScript" load_steps=2 format=2]
+
+[ext_resource path="res://addons/kakoeimon.braintree/GodotBrainTree.gdnlib" type="GDNativeLibrary" id=1]
+
+[resource]
+
+resource_name = "GodotBrainTree"
+class_name = "GodotBrainTree"
+library = ExtResource( 1 )
+

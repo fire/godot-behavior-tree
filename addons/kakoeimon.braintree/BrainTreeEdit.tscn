@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/kakoeimon.braintree/BrainTreeEdit.gd" type="Script" id=1]
+
+[node name="BrainTreeEdit" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1022.0
+margin_bottom = 598.0
+rect_min_size = Vector2( 1024, 600 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="GraphEdit" type="GraphEdit" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+right_disconnects = false
+scroll_offset = Vector2( 0, 0 )
+snap_distance = 20
+use_snap = true
+zoom = 1.0
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags" ]
+
+[node name="PopupMenu" type="PopupMenu" parent="." index="1"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 431.0
+margin_top = 228.0
+margin_right = 451.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 150, 240 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+items = [ "Selector", null, true, false, false, 0, 0, null, "", false, "Sequence", null, true, false, false, 1, 0, null, "", false, "StatefulSelector", null, true, false, false, 2, 0, null, "", false, "MemSequence", null, true, false, false, 3, 0, null, "", false, "ParallelSequence", null, true, false, false, 4, 0, null, "", false, "Succeeder", null, true, false, false, 5, 0, null, "", false, "Failer", null, true, false, false, 6, 0, null, "", false, "Inverter", null, true, false, false, 7, 0, null, "", false, "Repeater", null, true, false, false, 8, 0, null, "", false, "UntilSuccess", null, true, false, false, 9, 0, null, "", false, "UntilFailure", null, true, false, false, 10, 0, null, "", false, "Action", null, true, false, false, 11, 0, null, "", false ]
+hide_on_state_item_selection = false
+_sections_unfolded = [ "Popup", "Rect", "Size Flags" ]
+
+[connection signal="connection_to_empty" from="GraphEdit" to="." method="_on_GraphEdit_connection_to_empty"]
+
+[connection signal="id_pressed" from="PopupMenu" to="." method="_on_PopupMenu_id_pressed"]
+
+
