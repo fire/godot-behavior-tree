@@ -1,8 +1,12 @@
 #include "GodotBrainTreeAction.h"
+#include "GraphEdit.hpp"
+#include "Engine.hpp"
 
 void GodotBrainTree::_register_methods()
 {
     godot::register_property((char *)"BrainTree/dict", &GodotBrainTree::dict, godot::Dictionary());
+
+    godot::register_property((char *)"BrainTree/inspect", &GodotBrainTree::set_inspect, &GodotBrainTree::get_inspect, false);
    
     godot::register_method("is_brain_tree", &GodotBrainTree::is_brain_tree);
 
@@ -15,7 +19,6 @@ void GodotBrainTree::_register_methods()
     godot::register_method("update", &GodotBrainTree::update);
 
     godot::register_method("get_status", &GodotBrainTree::get_status);
-
     
 }
 
@@ -181,4 +184,27 @@ godot::Array GodotBrainTree::get_status() const
 {
     godot::Array z = tree.getStatus();
     return z;
+}
+
+bool GodotBrainTree::get_inspect() const
+{
+    if(godot::Engine::is_editor_hint()) return false;
+    return inspect;
+}
+
+void GodotBrainTree::set_inspect(bool value)
+{
+    if(godot::Engine::is_editor_hint()) return;
+    inspect = value;
+    if(inspect){
+        auto script = godot::ResourceLoader::load("res://addons/kakoeimon.braintree/Inspector.gd");
+        auto graph = new godot::GraphEdit();
+        graph->set_script(script.ptr());
+        graph->set_name("BrainTreeInspector");
+        owner->add_child(graph);
+    } else {
+        if(owner->has_node("BrainTreeInspector")){
+            owner->get_node("BrainTreeInspector")->queue_free();
+        }
+    }
 }

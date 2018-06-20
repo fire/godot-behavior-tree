@@ -3,6 +3,8 @@
 
 #include "Godot.hpp"
 #include "Node.hpp"
+#include "Resource.hpp"
+#include "ResourceLoader.hpp"
 
 
 
@@ -12,6 +14,9 @@ public:
     static void _register_methods();
     float version = 1.0f;
     godot::Dictionary dict;
+    bool inspect = false;
+    bool get_inspect() const;
+    void set_inspect(bool);
     BrainTree::BehaviorTree tree = BrainTree::BehaviorTree();
 
     void set_dict(godot::Dictionary);
