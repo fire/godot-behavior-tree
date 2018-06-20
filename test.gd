@@ -24,5 +24,5 @@ func test():
     #Failure = 2
     #Running = 3
     
-	return 2
+	return 1
 
