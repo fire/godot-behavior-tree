@@ -14,6 +14,8 @@ void GodotBrainTree::_register_methods()
 
     godot::register_method("update", &GodotBrainTree::update);
 
+    godot::register_method("get_status", &GodotBrainTree::get_status);
+
     
 }
 
@@ -39,7 +41,7 @@ void GodotBrainTree::setup()
         auto node = getFromDict(dict);
         tree.setRoot(node);
     }
-    
+
 }
 
 
@@ -173,4 +175,10 @@ BrainTree::Node::Ptr GodotBrainTree::getFromDict(godot::Dictionary in_dict)
             }
             break;
     }
+}
+
+godot::Array GodotBrainTree::get_status() const 
+{
+    godot::Array z = tree.getStatus();
+    return z;
 }

@@ -36,7 +36,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-right_disconnects = false
+right_disconnects = true
 scroll_offset = Vector2( 0, 0 )
 snap_distance = 20
 use_snap = true
@@ -67,7 +67,13 @@ items = [ "Selector", null, 1, false, false, 0, 0, null, "", false, "Sequence", 
 hide_on_state_item_selection = false
 _sections_unfolded = [ "Popup", "Rect", "Size Flags" ]
 
+[connection signal="connection_request" from="GraphEdit" to="." method="_on_GraphEdit_connection_request"]
+
 [connection signal="connection_to_empty" from="GraphEdit" to="." method="_on_GraphEdit_connection_to_empty"]
+
+[connection signal="delete_nodes_request" from="GraphEdit" to="." method="_on_GraphEdit_delete_nodes_request"]
+
+[connection signal="disconnection_request" from="GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]
 
 [connection signal="id_pressed" from="PopupMenu" to="." method="_on_PopupMenu_id_pressed"]
 

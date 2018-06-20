@@ -21,6 +21,8 @@ public:
     void setup();
     void update();
 
+    godot::Array get_status() const;
+
     BrainTree::Node::Ptr getFromDict(godot::Dictionary);
 
 };

@@ -9,6 +9,7 @@
 #include <string>
 #include <unordered_map>
 #include <cassert>
+#include "Godot.hpp"
 
 namespace BrainTree
 {
@@ -52,7 +53,11 @@ public:
     bool isTerminated() const { return isSuccess() || isFailure(); }
 
     void reset() { status = Status::Invalid; }
-
+    virtual godot::Array getStatus() const {
+        godot::Array z = godot::Array();
+        z.append( static_cast<int>(status) );
+        return z;
+    }
     using Ptr = std::shared_ptr<Node>;
 
 protected:
@@ -69,6 +74,15 @@ public:
     void addChild(Node::Ptr child) { children.push_back(child); }
     bool hasChildren() const { return !children.empty(); }
     
+    godot::Array getStatus() const {
+        godot::Array z = godot::Array();
+        z.append( static_cast<int>(status) );
+        for(auto c : children){
+            z.append( c->getStatus());
+        }
+        return z;
+    }
+
 protected:
     std::vector<Node::Ptr> children;
     std::vector<Node::Ptr>::iterator it;
@@ -83,6 +97,14 @@ public:
     void setChild(Node::Ptr node) { child = node; }
     bool hasChild() const { return child != nullptr; }
     
+    godot::Array getStatus() const {
+        godot::Array z = godot::Array();
+        z.append( static_cast<int>(status) );
+        z.append( child->getStatus());
+
+        return z;
+    }
+
 protected:
     Node::Ptr child = nullptr;
 };
@@ -176,7 +198,11 @@ public:
     
     void setRoot(const Node::Ptr &node) { root = node; }
     Blackboard::Ptr getBlackboard() const { return blackboard; }
-    
+    godot::Array getStatus() const {
+        godot::Array z = godot::Array();
+        z.append(root->getStatus());
+        return z;
+    }
 private:
     Node::Ptr root = nullptr;
     Blackboard::Ptr blackboard = nullptr;

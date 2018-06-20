@@ -1,8 +1,11 @@
 #ifndef GODOTBRAINTREEACTION_H
 #define GODOTBRAINTREEACTION_H
 
+
 #include "BrainTree.h"
 #include "GodotBrainTree.h"
+
+
 
 
 
@@ -17,6 +20,8 @@ public:
     Status update() override
     {
         int s = owner->owner->get_parent()->call(func_name);
+        return static_cast<Status>(s);
+        /*
         switch(s){
             case 0:
                 return Node::Status::Failure;
@@ -27,6 +32,7 @@ public:
             default:
                 return Node::Status::Invalid;
         }
+        */
     }
     
 };

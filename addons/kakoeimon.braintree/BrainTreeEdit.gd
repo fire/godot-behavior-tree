@@ -225,3 +225,26 @@ func get_node_type(node):
 		return 10
 	elif node is preload("nodes/Action.gd"):
 		return 11
+
+func _on_GraphEdit_delete_nodes_request():
+	for n in graph.get_children():
+		if n is GraphNode and n.selected:
+			var list = graph.get_connection_list()
+			for c in list:
+				if c.from == n.name or c.to == n.name:
+					graph.disconnect_node(c.from, c.from_port, c.to, c.to_port)
+					
+	for n in graph.get_children():
+		if n is GraphNode and n.selected:
+			n.free()
+	pass # replace with function body
+
+
+func _on_GraphEdit_disconnection_request(from, from_slot, to, to_slot):
+	graph.disconnect_node(from, from_slot, to, to_slot)
+	pass # replace with function body
+
+
+func _on_GraphEdit_connection_request(from, from_slot, to, to_slot):
+	graph.connect_node(from, from_slot, to, to_slot)
+	pass # replace with function body
