@@ -1,4 +1,5 @@
 #include "GodotBrainTreeAction.h"
+#include "CanvasLayer.hpp"
 #include "GraphEdit.hpp"
 #include "Engine.hpp"
 
@@ -197,11 +198,13 @@ void GodotBrainTree::set_inspect(bool value)
     if(godot::Engine::is_editor_hint()) return;
     inspect = value;
     if(inspect){
+        auto canvas = new godot::CanvasLayer();
+        canvas->set_name("BrainTreeInspector");
         auto script = godot::ResourceLoader::load("res://addons/kakoeimon.braintree/Inspector.gd");
         auto graph = new godot::GraphEdit();
         graph->set_script(script.ptr());
-        graph->set_name("BrainTreeInspector");
-        owner->add_child(graph);
+        canvas->add_child(graph);
+        owner->add_child(canvas);
     } else {
         if(owner->has_node("BrainTreeInspector")){
             owner->get_node("BrainTreeInspector")->queue_free();
