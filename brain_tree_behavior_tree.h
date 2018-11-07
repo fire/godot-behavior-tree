@@ -3,10 +3,6 @@
 
 #include "scene/main/node.h"
 #include "src/BrainTree.h"
-//#include "Godot.hpp"
-//#include "Node.hpp"
-//#include "Resource.hpp"
-//#include "ResourceLoader.hpp"
 
 class BrainTreeBehaviorTree : public Resource {
 	GDCLASS(BrainTreeBehaviorTree, Resource);
