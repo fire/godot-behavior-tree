@@ -260,7 +260,7 @@ VisualBrainTreeBehaviorTreeEditor::VisualBrainTreeBehaviorTreeEditor() {
 
 void VisualBrainTreeBehaviorTreeEditorPlugin::edit(Object *p_object) {
 
-	visual_anl_noise_editor->edit(Object::cast_to<VisualBrainTreeBehaviorTree>(p_object));
+	visual_brain_tree_behavior_tree_editor->edit(Object::cast_to<VisualBrainTreeBehaviorTree>(p_object));
 }
 
 bool VisualBrainTreeBehaviorTreeEditorPlugin::handles(Object *p_object) const {
@@ -272,33 +272,33 @@ void VisualBrainTreeBehaviorTreeEditorPlugin::make_visible(bool p_visible) {
 
 	if (p_visible) {
 		button->show();
-		editor->make_bottom_panel_item_visible(visual_anl_noise_editor);
+		editor->make_bottom_panel_item_visible(visual_brain_tree_behavior_tree_editor);
 
-		visual_anl_noise_editor->set_process(true);
-		visual_anl_noise_editor->set_process_input(true);
+		visual_brain_tree_behavior_tree_editor->set_process(true);
+		visual_brain_tree_behavior_tree_editor->set_process_input(true);
 	} else {
 
-		if (visual_anl_noise_editor->is_visible_in_tree())
+		if (visual_brain_tree_behavior_tree_editor->is_visible_in_tree())
 			editor->hide_bottom_panel();
 		button->hide();
 
-		visual_anl_noise_editor->set_process(false);
-		visual_anl_noise_editor->set_process_input(false);
+		visual_brain_tree_behavior_tree_editor->set_process(false);
+		visual_brain_tree_behavior_tree_editor->set_process_input(false);
 	}
 }
 
 void VisualBrainTreeBehaviorTreeEditorPlugin::save_external_data() {
 
-	visual_anl_noise_editor->save_external_data();
+	visual_brain_tree_behavior_tree_editor->save_external_data();
 }
 
 VisualBrainTreeBehaviorTreeEditorPlugin::VisualBrainTreeBehaviorTreeEditorPlugin(EditorNode *p_node) {
 
 	editor = p_node;
-	visual_anl_noise_editor = memnew(VisualBrainTreeBehaviorTreeEditor);
-	visual_anl_noise_editor->set_custom_minimum_size(Size2(0, 300));
+	visual_brain_tree_behavior_tree_editor = memnew(VisualBrainTreeBehaviorTreeEditor);
+	visual_brain_tree_behavior_tree_editor->set_custom_minimum_size(Size2(0, 300));
 
-	button = editor->add_bottom_panel_item(TTR("VisualAnlNoise"), visual_anl_noise_editor);
+	button = editor->add_bottom_panel_item(TTR("VisualAnlNoise"), visual_brain_tree_behavior_tree_editor);
 	button->hide();
 }
 

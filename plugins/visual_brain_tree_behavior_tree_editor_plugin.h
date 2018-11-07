@@ -65,7 +65,7 @@ class VisualBrainTreeBehaviorTreeEditorPlugin : public EditorPlugin {
 
 	GDCLASS(VisualBrainTreeBehaviorTreeEditorPlugin, EditorPlugin);
 
-	VisualBrainTreeBehaviorTreeEditor *visual_anl_noise_editor;
+	VisualBrainTreeBehaviorTreeEditor *visual_brain_tree_behavior_tree_editor;
 	EditorNode *editor;
 	Button *button;
 

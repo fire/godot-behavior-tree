@@ -455,7 +455,7 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_add_node(int p_idx) {
 
 	int id_to_use = component->get_valid_node_id();
 
-	undo_redo->create_action("Add Node to Visual AnlNoise");
+	undo_redo->create_action("Add Node to Visual BrainTree Behavior Tree");
 	undo_redo->add_do_method(component.ptr(), "add_node", vanode, position, id_to_use);
 	undo_redo->add_undo_method(component.ptr(), "remove_node", id_to_use);
 	undo_redo->add_do_method(this, "_update_graph");
@@ -825,7 +825,7 @@ public:
 		UndoRedo *undo_redo = EditorNode::get_singleton()->get_undo_redo();
 
 		updating = true;
-		undo_redo->create_action("Edit Visual AnlNoise Property: " + prop, UndoRedo::MERGE_ENDS);
+		undo_redo->create_action("Edit Visual BrainTree Behavior Tree Property: " + prop, UndoRedo::MERGE_ENDS);
 		undo_redo->add_do_property(node.ptr(), prop, p_value);
 		undo_redo->add_undo_property(node.ptr(), prop, node->get(prop));
 		undo_redo->commit_action();
