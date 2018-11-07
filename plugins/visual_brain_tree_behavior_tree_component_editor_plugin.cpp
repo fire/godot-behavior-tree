@@ -767,12 +767,6 @@ VisualBrainTreeBehaviorTreeNodeComponentEditor::VisualBrainTreeBehaviorTreeNodeC
 	graph->get_zoom_hbox()->move_child(add_node, 0);
 	add_node->get_popup()->connect("id_pressed", this, "_add_node");
 
-	add_options.push_back(AddOption("Scalar", "Constants", "VisualBrainTreeBehaviorTreeNodeScalar"));
-
-	add_options.push_back(AddOption("ScalarOp", "Operators", "VisualBrainTreeBehaviorTreeNodeScalarOp"));
-
-	add_options.push_back(AddOption("Simplex", "Basis", "VisualBrainTreeBehaviorTreeNodeSimplexBasis"));
-	add_options.push_back(AddOption("Expression", "Misc", "VisualBrainTreeBehaviorTreeNodeExpression"));
 	add_options.push_back(AddOption("Component", "Component", "VisualBrainTreeBehaviorTreeNodeComponent"));
 
 	_update_options_menu();
