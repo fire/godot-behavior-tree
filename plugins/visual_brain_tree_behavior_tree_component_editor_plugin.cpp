@@ -1,5 +1,5 @@
-#include "visual_brain_tree_behavior_tree_editor_plugin.h"
 #include "visual_brain_tree_behavior_tree_component_editor_plugin.h"
+#include "visual_brain_tree_behavior_tree_editor_plugin.h"
 
 #include "core/io/resource_loader.h"
 #include "core/os/input.h"
@@ -264,7 +264,8 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_update_graph() {
 						Vector3 v = default_value;
 						button->set_text(String::num(v.x, 3) + "," + String::num(v.y, 3) + "," + String::num(v.z, 3));
 					} break;
-					default: {}
+					default: {
+					}
 				}
 			}
 
@@ -383,11 +384,9 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_preview_select_port(int p_
 }
 
 void VisualBrainTreeBehaviorTreeNodeComponentEditor::_line_edit_changed(const String &p_text, Object *line_edit, int p_node_id) {
-
 }
 
 void VisualBrainTreeBehaviorTreeNodeComponentEditor::_line_edit_focus_out(Object *line_edit, int p_node_id) {
-
 }
 
 void VisualBrainTreeBehaviorTreeNodeComponentEditor::_port_edited() {
@@ -769,7 +768,7 @@ VisualBrainTreeBehaviorTreeNodeComponentEditor::VisualBrainTreeBehaviorTreeNodeC
 
 	add_options.push_back(AddOption("Selector", "Node", "VisualBrainTreeBehaviorTreeNodeSelector"));
 	add_options.push_back(AddOption("Sequence", "Node", "VisualBrainTreeBehaviorTreeNodeSequence"));
-	add_options.push_back(AddOption("Action", "Node", "VisualBrainTreeBehaviorTreeNodeAction"));
+	add_options.push_back(AddOption("Task", "Node", "VisualBrainTreeBehaviorTreeNodeTask"));
 	add_options.push_back(AddOption("Component", "Component", "VisualBrainTreeBehaviorTreeNodeComponent"));
 
 	_update_options_menu();
@@ -810,7 +809,6 @@ void VisualBrainTreeBehaviourTreeNodePlugin::_bind_methods() {
 	BIND_VMETHOD(MethodInfo(Variant::OBJECT, "create_editor", PropertyInfo(Variant::OBJECT, "for_node", PROPERTY_HINT_RESOURCE_TYPE, "VisualBrainTreeBehaviorTreeNode")));
 }
 
-
 class VisualBrainTreeBehaviorTreeNodePluginDefaultEditor : public VBoxContainer {
 	GDCLASS(VisualBrainTreeBehaviorTreeNodePluginDefaultEditor, VBoxContainer)
 public:
@@ -844,7 +842,7 @@ public:
 	}
 
 	bool updating;
-	Ref<VisualBrainTreeBehaviorTreeNodeComponent> node;
+	Ref<VisualBrainTreeBehaviorTreeNode> node;
 	Vector<EditorProperty *> properties;
 
 	void setup(Vector<EditorProperty *> p_properties, const Vector<StringName> &p_names, Ref<VisualBrainTreeBehaviorTreeNode> p_node) {
@@ -853,7 +851,6 @@ public:
 		properties = p_properties;
 
 		for (int i = 0; i < p_properties.size(); i++) {
-
 			add_child(p_properties[i]);
 
 			properties[i]->connect("property_changed", this, "_property_changed");
@@ -876,7 +873,6 @@ Control *VisualBrainTreeBehaviorTreeNodePluginDefault::create_editor(const Ref<V
 
 	Vector<StringName> properties = p_node->get_editable_properties();
 	if (properties.size() == 0) {
-		print_line("properties null");
 		return NULL;
 	}
 
@@ -895,7 +891,6 @@ Control *VisualBrainTreeBehaviorTreeNodePluginDefault::create_editor(const Ref<V
 	}
 
 	if (pinfo.size() == 0) {
-		print_line("pinfo null");
 		return NULL;
 	}
 
@@ -908,17 +903,20 @@ Control *VisualBrainTreeBehaviorTreeNodePluginDefault::create_editor(const Ref<V
 
 		EditorProperty *prop = EditorInspector::instantiate_property_editor(node.ptr(), pinfo[i].type, pinfo[i].name, pinfo[i].hint, pinfo[i].hint_string, pinfo[i].usage);
 		if (!prop) {
-			print_line("prop null");
 			return NULL;
 		}
 
-		if (Object::cast_to<EditorPropertyFloat>(prop)) {
+		if (Object::cast_to<EditorPropertyResource>(prop)) {
+			Object::cast_to<EditorPropertyResource>(prop)->set_use_sub_inspector(false);
+			prop->set_custom_minimum_size(Size2(100 * EDSCALE, 0));
+		} else if (Object::cast_to<EditorPropertyFloat>(prop)) {
 			prop->set_custom_minimum_size(Size2(100 * EDSCALE, 0));
 		} else if (Object::cast_to<EditorPropertyEnum>(prop)) {
 			prop->set_custom_minimum_size(Size2(100 * EDSCALE, 0));
 			Object::cast_to<EditorPropertyEnum>(prop)->set_option_button_clip(false);
+		} else {
+			prop->set_custom_minimum_size(Size2(150 * EDSCALE, 0));
 		}
-
 		editors.push_back(prop);
 		properties.push_back(pinfo[i].name);
 	}
