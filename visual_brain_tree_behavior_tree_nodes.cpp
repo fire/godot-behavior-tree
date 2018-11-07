@@ -46,7 +46,16 @@ String VisualBrainTreeBehaviorTreeNodeComposite::get_blackboard_based_condition(
 Vector<StringName> VisualBrainTreeBehaviorTreeNodeComposite::get_editable_properties() const {
 	Vector<StringName> props;
 	props.push_back("blackboard_based_condition");
+	props.push_back("service");
 	return props;
+}
+
+void VisualBrainTreeBehaviorTreeNodeComposite::set_service(const String p_service) {
+	service = p_service;
+}
+
+StringName VisualBrainTreeBehaviorTreeNodeComposite::get_service() const {
+	return service;
 }
 
 VisualBrainTreeBehaviorTreeNodeComposite::VisualBrainTreeBehaviorTreeNodeComposite() {
@@ -56,8 +65,11 @@ void VisualBrainTreeBehaviorTreeNodeComposite::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("set_blackboard_based_condition", "blackboard_based_condition"), &VisualBrainTreeBehaviorTreeNodeComposite::set_blackboard_based_condition);
 	ClassDB::bind_method(D_METHOD("get_blackboard_based_condition"), &VisualBrainTreeBehaviorTreeNodeComposite::get_blackboard_based_condition);
+	ClassDB::bind_method(D_METHOD("set_service", "service"), &VisualBrainTreeBehaviorTreeNodeComposite::set_service);
+	ClassDB::bind_method(D_METHOD("get_service"), &VisualBrainTreeBehaviorTreeNodeComposite::get_service);
 
 	ADD_PROPERTY(PropertyInfo(Variant::STRING, "blackboard_based_condition"), "set_blackboard_based_condition", "get_blackboard_based_condition");
+	ADD_PROPERTY(PropertyInfo(Variant::STRING, "service"), "set_service", "get_service");
 }
 
 String VisualBrainTreeBehaviorTreeNodeSequence::get_caption() const {

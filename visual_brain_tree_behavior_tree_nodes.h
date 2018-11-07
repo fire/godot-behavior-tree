@@ -6,12 +6,12 @@
 class VisualBrainTreeBehaviorTreeNodeComposite : public VisualBrainTreeBehaviorTreeNode {
 	GDCLASS(VisualBrainTreeBehaviorTreeNodeComposite, VisualBrainTreeBehaviorTreeNode)
 	StringName blackboard_based_condition;
+	StringName service;
 
 public:
 	virtual String get_caption() const;
 	virtual void set_input_port_value(int p_port, const Variant &p_value);
 	virtual Variant get_input_port_value(int p_port) const;
-	;
 	virtual int get_input_port_count() const;
 	virtual PortType get_input_port_type(int p_port) const;
 	virtual String get_input_port_name(int p_port) const;
@@ -21,6 +21,8 @@ public:
 	virtual void set_blackboard_based_condition(const String p_blackboard_based_condition);
 	virtual String get_blackboard_based_condition() const;
 	virtual Vector<StringName> get_editable_properties() const;
+	virtual void set_service(const String p_service);
+	virtual StringName get_service() const;
 	VisualBrainTreeBehaviorTreeNodeComposite();
 
 protected:
