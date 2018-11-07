@@ -766,8 +766,10 @@ VisualBrainTreeBehaviorTreeNodeComponentEditor::VisualBrainTreeBehaviorTreeNodeC
 	add_node->set_text(TTR("Add Node.."));
 	graph->get_zoom_hbox()->move_child(add_node, 0);
 	add_node->get_popup()->connect("id_pressed", this, "_add_node");
-	
+
 	add_options.push_back(AddOption("Selector", "Node", "VisualBrainTreeBehaviorTreeNodeSelector"));
+	add_options.push_back(AddOption("Sequence", "Node", "VisualBrainTreeBehaviorTreeNodeSequence"));
+	add_options.push_back(AddOption("Action", "Node", "VisualBrainTreeBehaviorTreeNodeAction"));
 	add_options.push_back(AddOption("Component", "Component", "VisualBrainTreeBehaviorTreeNodeComponent"));
 
 	_update_options_menu();
