@@ -16,7 +16,7 @@ void BrainTreeBehaviorTree::_bind_methods() {
 	ClassDB::bind_method("get_status", &BrainTreeBehaviorTree::get_status);
 
 	ADD_PROPERTY(PropertyInfo(Variant::DICTIONARY, "dict", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NOEDITOR), "set_dict", "get_dict");
-	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "inspect"), "set_inspect", "get_inspect");
+	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "inspect", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NOEDITOR), "set_inspect", "get_inspect");
 }
 
 void BrainTreeBehaviorTree::is_brain_tree() {
