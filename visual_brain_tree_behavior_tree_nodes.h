@@ -51,9 +51,11 @@ protected:
 	static void _bind_methods() {}
 };
 
-
 class VisualBrainTreeBehaviorTreeNodeAction : public VisualBrainTreeBehaviorTreeNode {
 	GDCLASS(VisualBrainTreeBehaviorTreeNodeAction, VisualBrainTreeBehaviorTreeNode)
+
+	StringName method;
+
 public:
 	virtual String get_caption() const { return "Action"; }
 
@@ -69,12 +71,34 @@ public:
 	virtual PortType get_output_port_type(int p_port) const { return PORT_TYPE_INDEX; }
 	virtual String get_output_port_name(int p_port) const { return String(); }
 
-	virtual Vector<StringName> get_editable_properties() const { return Vector<StringName>(); }
+	void set_action_method(const String p_method) {
 
-	VisualBrainTreeBehaviorTreeNodeAction() {}
+		method = p_method;
+		emit_changed();
+	}
+
+	String get_action_method() const {
+
+		return method;
+	}
+
+	virtual Vector<StringName> get_editable_properties() const {
+
+		Vector<StringName> props;
+		props.push_back("action_method");
+
+		return props;
+	}
+
+	VisualBrainTreeBehaviorTreeNodeAction() { }
 
 protected:
-	static void _bind_methods() {}
+	static void _bind_methods() {
+		ClassDB::bind_method(D_METHOD("set_action_method", "method"), &VisualBrainTreeBehaviorTreeNodeAction::set_action_method);
+		ClassDB::bind_method(D_METHOD("get_action_method"), &VisualBrainTreeBehaviorTreeNodeAction::get_action_method);
+
+		ADD_PROPERTY(PropertyInfo(Variant::STRING, "action_method"), "set_action_method", "get_action_method");
+	}
 };
 
 //class VisualAnlNoiseNodeScalar : public VisualAnlNoiseNode {
