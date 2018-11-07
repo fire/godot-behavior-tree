@@ -12,3 +12,5 @@ addons/kakoeimon.braintree/*.os
 # System/tool-specific ignores
 .directory
 *~
+/*.obj
+/__pycache__/
