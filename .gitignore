@@ -14,3 +14,4 @@ addons/kakoeimon.braintree/*.os
 *~
 /*.obj
 /__pycache__/
+*.obj
