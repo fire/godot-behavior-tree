@@ -683,7 +683,7 @@ VisualBrainTreeBehaviorTreeNodeInput::PortType VisualBrainTreeBehaviorTreeNodeIn
 
 String VisualBrainTreeBehaviorTreeNodeInput::get_output_port_name(int p_port) const {
 
-	return TTR("Index");
+	return TTR("Child");
 }
 
 bool VisualBrainTreeBehaviorTreeNodeInput::is_port_separator(int p_index) const {
@@ -693,7 +693,7 @@ bool VisualBrainTreeBehaviorTreeNodeInput::is_port_separator(int p_index) const 
 
 String VisualBrainTreeBehaviorTreeNodeInput::get_caption() const {
 
-	return TTR("Output");
+	return TTR("Root");
 }
 
 void VisualBrainTreeBehaviorTreeNodeInput::set_input_port_value(int p_port, const Variant &p_value) {

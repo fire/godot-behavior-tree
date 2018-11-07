@@ -265,7 +265,7 @@ void VisualBrainTreeBehaviorTreeEditorPlugin::edit(Object *p_object) {
 
 bool VisualBrainTreeBehaviorTreeEditorPlugin::handles(Object *p_object) const {
 
-	return p_object->is_class("VisualAnlNoise");
+	return p_object->is_class("VisualBrainTreeBehaviorTree");
 }
 
 void VisualBrainTreeBehaviorTreeEditorPlugin::make_visible(bool p_visible) {
