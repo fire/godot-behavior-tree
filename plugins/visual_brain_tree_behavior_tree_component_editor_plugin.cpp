@@ -436,19 +436,19 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_add_node(int p_idx) {
 
 	ERR_FAIL_INDEX(p_idx, add_options.size());
 
-	Ref<VisualBrainTreeBehaviorTreeNode> vanode;
+	Ref<VisualBrainTreeBehaviorTreeNode> bt_node;
 
 	if (add_options[p_idx].type != String()) {
-		VisualBrainTreeBehaviorTreeNode *van = Object::cast_to<VisualBrainTreeBehaviorTreeNode>(ClassDB::instance(add_options[p_idx].type));
-		ERR_FAIL_COND(!van);
-		vanode = Ref<VisualBrainTreeBehaviorTreeNode>(van);
+		VisualBrainTreeBehaviorTreeNode *node = Object::cast_to<VisualBrainTreeBehaviorTreeNode>(ClassDB::instance(add_options[p_idx].type));
+		ERR_FAIL_COND(!node);
+		bt_node = Ref<VisualBrainTreeBehaviorTreeNode>(node);
 	} else {
 		ERR_FAIL_COND(add_options[p_idx].script.is_null());
 		String base_type = add_options[p_idx].script->get_instance_base_type();
-		VisualBrainTreeBehaviorTreeNode *van = Object::cast_to<VisualBrainTreeBehaviorTreeNode>(ClassDB::instance(base_type));
-		ERR_FAIL_COND(!van);
-		vanode = Ref<VisualBrainTreeBehaviorTreeNode>(van);
-		vanode->set_script(add_options[p_idx].script.get_ref_ptr());
+		VisualBrainTreeBehaviorTreeNode *node = Object::cast_to<VisualBrainTreeBehaviorTreeNode>(ClassDB::instance(base_type));
+		ERR_FAIL_COND(!node);
+		bt_node = Ref<VisualBrainTreeBehaviorTreeNode>(node);
+		bt_node->set_script(add_options[p_idx].script.get_ref_ptr());
 	}
 
 	Point2 position = (graph->get_scroll_ofs() + graph->get_size() * 0.5) / EDSCALE;
@@ -456,7 +456,7 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_add_node(int p_idx) {
 	int id_to_use = component->get_valid_node_id();
 
 	undo_redo->create_action("Add Node to Visual BrainTree Behavior Tree");
-	undo_redo->add_do_method(component.ptr(), "add_node", vanode, position, id_to_use);
+	undo_redo->add_do_method(component.ptr(), "add_node", bt_node, position, id_to_use);
 	undo_redo->add_undo_method(component.ptr(), "remove_node", id_to_use);
 	undo_redo->add_do_method(this, "_update_graph");
 	undo_redo->add_undo_method(this, "_update_graph");
@@ -766,7 +766,8 @@ VisualBrainTreeBehaviorTreeNodeComponentEditor::VisualBrainTreeBehaviorTreeNodeC
 	add_node->set_text(TTR("Add Node.."));
 	graph->get_zoom_hbox()->move_child(add_node, 0);
 	add_node->get_popup()->connect("id_pressed", this, "_add_node");
-
+	
+	add_options.push_back(AddOption("Selector", "Node", "VisualBrainTreeBehaviorTreeNodeSelector"));
 	add_options.push_back(AddOption("Component", "Component", "VisualBrainTreeBehaviorTreeNodeComponent"));
 
 	_update_options_menu();

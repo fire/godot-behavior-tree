@@ -355,10 +355,10 @@ void VisualBrainTreeBehaviorTreeNodeComponent::evaluate(Ref<VisualBrainTreeBehav
 
 void VisualBrainTreeBehaviorTreeNodeComponent::evaluate_node(int node, Ref<VisualBrainTreeBehaviorTree> behavior_tree, Connections &input_connections, Connections &output_connections, Set<int> &processed) {
 
-	Ref<VisualBrainTreeBehaviorTreeNode> &vanode = graph.nodes[node].node;
+	Ref<VisualBrainTreeBehaviorTreeNode> &bt_node = graph.nodes[node].node;
 
 	// Evaluate inputs recursively first to retrieve needed indexes/values
-	int input_count = vanode->get_input_port_count();
+	int input_count = bt_node->get_input_port_count();
 	for (int i = 0; i < input_count; i++) {
 
 		ConnectionKey ck;
@@ -387,16 +387,16 @@ void VisualBrainTreeBehaviorTreeNodeComponent::evaluate_node(int node, Ref<Visua
 			int from_node = input_connections[ck]->get().from_node;
 			int from_port = input_connections[ck]->get().from_port;
 
-			const Ref<VisualBrainTreeBehaviorTreeNode> &from_vanode = graph.nodes[from_node].node;
+			const Ref<VisualBrainTreeBehaviorTreeNode> &from_bt_node = graph.nodes[from_node].node;
 
-			VisualBrainTreeBehaviorTreeNode::PortType in_type = vanode->get_input_port_type(i);
-			VisualBrainTreeBehaviorTreeNode::PortType out_type = from_vanode->get_output_port_type(from_port);
+			VisualBrainTreeBehaviorTreeNode::PortType in_type = bt_node->get_input_port_type(i);
+			VisualBrainTreeBehaviorTreeNode::PortType out_type = from_bt_node->get_output_port_type(from_port);
 
-			vanode->set_input_port_value(i, from_vanode->get_output_port_value(0));
+			bt_node->set_input_port_value(i, from_bt_node->get_output_port_value(0));
 		}
 	}
 	// Ready to evaluate this node with inputs set
-	vanode->evaluate(behavior_tree); // sets output value
+	bt_node->evaluate(behavior_tree); // sets output value
 
 	processed.insert(node);
 }
@@ -683,7 +683,7 @@ VisualBrainTreeBehaviorTreeNodeInput::PortType VisualBrainTreeBehaviorTreeNodeIn
 
 String VisualBrainTreeBehaviorTreeNodeInput::get_output_port_name(int p_port) const {
 
-	return TTR("Child");
+	return TTR("");
 }
 
 bool VisualBrainTreeBehaviorTreeNodeInput::is_port_separator(int p_index) const {
