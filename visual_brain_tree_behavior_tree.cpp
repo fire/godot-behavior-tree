@@ -603,9 +603,9 @@ Ref<VisualBrainTreeBehaviorTreeNodeComponent> VisualBrainTreeBehaviorTree::get_c
 
 VisualBrainTreeBehaviorTreeNodeComponent::VisualBrainTreeBehaviorTreeNodeComponent() {
 
-    Ref<VisualBrainTreeBehaviorTreeNodeInput> output;
-    output.instance();
-    graph.nodes[NODE_ID_OUTPUT].node = output;
+    Ref<VisualBrainTreeBehaviorTreeNodeInput> input;
+    input.instance();
+    graph.nodes[NODE_ID_OUTPUT].node = input;
     graph.nodes[NODE_ID_OUTPUT].position = Vector2(400, 150);
 
 	name = "component";
@@ -613,7 +613,7 @@ VisualBrainTreeBehaviorTreeNodeComponent::VisualBrainTreeBehaviorTreeNodeCompone
 
 int VisualBrainTreeBehaviorTreeNodeComponent::get_input_port_count() const {
 
-	return 0;
+	return 1;
 }
 
 VisualBrainTreeBehaviorTreeNode::PortType VisualBrainTreeBehaviorTreeNodeComponent::get_input_port_type(int p_port) const {
@@ -628,7 +628,7 @@ String VisualBrainTreeBehaviorTreeNodeComponent::get_input_port_name(int p_port)
 
 int VisualBrainTreeBehaviorTreeNodeComponent::get_output_port_count() const {
 
-	return 1;
+	return 0;
 }
 
 VisualBrainTreeBehaviorTreeNode::PortType VisualBrainTreeBehaviorTreeNodeComponent::get_output_port_type(int p_port) const {

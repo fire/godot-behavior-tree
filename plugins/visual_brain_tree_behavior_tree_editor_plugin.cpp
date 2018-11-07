@@ -298,7 +298,7 @@ VisualBrainTreeBehaviorTreeEditorPlugin::VisualBrainTreeBehaviorTreeEditorPlugin
 	visual_brain_tree_behavior_tree_editor = memnew(VisualBrainTreeBehaviorTreeEditor);
 	visual_brain_tree_behavior_tree_editor->set_custom_minimum_size(Size2(0, 300));
 
-	button = editor->add_bottom_panel_item(TTR("VisualAnlNoise"), visual_brain_tree_behavior_tree_editor);
+	button = editor->add_bottom_panel_item(TTR("VisualBrainTreeBehaviorTree"), visual_brain_tree_behavior_tree_editor);
 	button->hide();
 }
 
