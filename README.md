@@ -3,7 +3,7 @@ Plugin Behavior Trees for Godot 3+
 
 This plugin uses : https://github.com/arvidsson/BrainTree
 
-Early version but functional.
+Work in Progress. Not ready for production.
 
 # Install
 Copy the addons directory to your project and enable the plugin though the editor.
