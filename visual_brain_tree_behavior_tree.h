@@ -1,5 +1,5 @@
-#ifndef VISUAL_ANL_NOISE_H
-#define VISUAL_ANL_NOISE_H
+#ifndef VISUAL_BRAIN_TREE_BEHAVIOR_TREE_H
+#define VISUAL_BRAIN_TREE_BEHAVIOR_TREE_H
 
 #include "brain_tree_behavior_tree.h"
 
