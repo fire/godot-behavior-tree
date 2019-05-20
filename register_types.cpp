@@ -5,6 +5,12 @@
 #include "visual_brain_tree_behavior_tree.h"
 #include "visual_brain_tree_behavior_tree_nodes.h"
 
+#ifdef TOOLS_ENABLED
+static void _editor_init() {
+	EditorPlugins::add_by_type<VisualBrainTreeBehaviorTreeEditorPlugin>();
+}
+#endif
+
 void register_brain_tree_types() {
 
 	ClassDB::register_class<BrainTreeBehaviorTree>();
@@ -19,7 +25,7 @@ void register_brain_tree_types() {
 	ClassDB::register_class<VisualBrainTreeBehaviorTreeNodeTask>();
 
 #ifdef TOOLS_ENABLED
-	EditorPlugins::add_by_type<VisualBrainTreeBehaviorTreeEditorPlugin>();
+	EditorNode::add_init_callback(_editor_init);
 #endif
 }
 

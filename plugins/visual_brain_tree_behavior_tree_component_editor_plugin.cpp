@@ -782,14 +782,14 @@ VisualBrainTreeBehaviorTreeNodeComponentEditor::VisualBrainTreeBehaviorTreeNodeC
 
 	undo_redo = EditorNode::get_singleton()->get_undo_redo();
 
-	Ref<VisualBrainTreeBehaviorTreeNodePluginDefault> default_plugin;
-	default_plugin.instance();
-	add_plugin(default_plugin);
+	// Ref<VisualBrainTreeBehaviorTreeNodePluginDefault> default_plugin;
+	// default_plugin = VisualBrainTreeBehaviorTreeNodePluginDefault(EditorNode::get_singleton());
+	// add_plugin(default_plugin);
 
-	property_editor = memnew(CustomPropertyEditor);
-	add_child(property_editor);
+	// property_editor = memnew(CustomPropertyEditor);
+	// add_child(property_editor);
 
-	property_editor->connect("variant_changed", this, "_port_edited");
+	// property_editor->connect("variant_changed", this, "_port_edited");
 }
 
 ///////////////////////////////////
