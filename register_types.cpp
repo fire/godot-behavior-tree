@@ -14,6 +14,7 @@ void register_brain_tree_types() {
 	ClassDB::register_class<VisualBrainTreeBehaviorTreeNodeSelector>();
 	ClassDB::register_class<VisualBrainTreeBehaviorTreeNodeSequence>();
 	ClassDB::register_class<VisualBrainTreeBehaviorTreeNodeTask>();
+	ClassDB::register_class<BehaviourTreePlayer>();
 	EditorPlugins::add_by_type<VisualBrainTreeBehaviorTreeEditorPlugin>();
 }
 

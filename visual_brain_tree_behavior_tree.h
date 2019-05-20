@@ -222,4 +222,13 @@ public:
 	VisualBrainTreeBehaviorTreeNodeInput();
 };
 
+class BehaviourTreePlayer : public Node {
+	GDCLASS(BehaviourTreePlayer, Node);
+	OBJ_CATEGORY("Behaviour Trees");
+	Error add_animation(const StringName &p_name, const Ref<BrainTreeBehaviorTree> &p_) {
+		return OK;
+	}
+	void remove_animation(const StringName &p_name) {
+	}
+};
 #endif
