@@ -487,14 +487,12 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_disconnection_request(cons
 	int from = p_from.to_int();
 	int to = p_to.to_int();
 
-	//updating = true; seems graph edit can handle this, no need to protect
 	undo_redo->create_action("Nodes Disconnected");
 	undo_redo->add_do_method(component.ptr(), "disconnect_nodes", from, p_from_index, to, p_to_index);
 	undo_redo->add_undo_method(component.ptr(), "connect_nodes", from, p_from_index, to, p_to_index);
 	undo_redo->add_do_method(this, "_update_graph");
 	undo_redo->add_undo_method(this, "_update_graph");
 	undo_redo->commit_action();
-	//updating = false;
 }
 
 void VisualBrainTreeBehaviorTreeNodeComponentEditor::_connection_to_empty(const String &p_from, int p_from_slot, const Vector2 &p_release_position) {
@@ -731,10 +729,6 @@ VisualBrainTreeBehaviorTreeNodeComponentEditor::VisualBrainTreeBehaviorTreeNodeC
 
 	component.instance();
 }
-
-///////////////////////////////////
-// Creates custom editors for nodes
-///////////////////////////////////
 
 Control *VisualBrainTreeBehaviourTreeNodePlugin::create_editor(const Ref<VisualBrainTreeBehaviorTreeNode> &p_node) {
 
