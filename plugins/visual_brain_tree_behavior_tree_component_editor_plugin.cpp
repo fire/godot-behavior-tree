@@ -715,6 +715,15 @@ VisualBrainTreeBehaviorTreeNodeComponentEditor::VisualBrainTreeBehaviorTreeNodeC
 	add_options.push_back(AddOption("Selector", "Node", "VisualBrainTreeBehaviorTreeNodeSelector"));
 	add_options.push_back(AddOption("Sequence", "Node", "VisualBrainTreeBehaviorTreeNodeSequence"));
 	add_options.push_back(AddOption("Task", "Node", "VisualBrainTreeBehaviorTreeNodeTask"));
+	// "StatefulSelector"
+	// "MemSequence"
+	// "ParallelSequence"
+	// "Succeeder"
+	// "Failer",
+	// "Inverter"
+	// "Repeater"
+	// "UntilSuccess"
+	// "UntilFailure"
 
 	_update_options_menu();
 
