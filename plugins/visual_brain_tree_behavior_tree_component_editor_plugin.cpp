@@ -10,8 +10,6 @@
 #include "scene/gui/panel.h"
 #include "scene/main/viewport.h"
 
-///////////////////////////////////
-
 bool VisualBrainTreeBehaviorTreeNodeComponentEditor::can_edit(const Ref<VisualBrainTreeBehaviorTreeNodeComponent> &p_comp) {
 
 	Ref<VisualBrainTreeBehaviorTreeNodeComponent> comp = p_comp;
@@ -150,10 +148,6 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_update_graph() {
 
 		GraphNode *node = memnew(GraphNode);
 		graph->add_child(node);
-
-		/*if (!vanode->is_connected("changed", this, "_node_changed")) {
-			vanode->connect("changed", this, "_node_changed", varray(vanode->get_instance_id()), CONNECT_DEFERRED);
-		}*/
 
 		node->set_offset(position);
 
@@ -299,13 +293,6 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_update_graph() {
 
 			node->set_slot(i + port_offset, valid_left, port_left, type_color[port_left], valid_right, port_right, type_color[port_right]);
 		}
-
-		// if (vanode->get_output_port_for_preview() >= 0) {
-		// 	VisualBrainTreeBehaviorTreeNodePortPreview *port_preview = memnew(VisualBrainTreeBehaviorTreeNodePortPreview);
-		// 	port_preview->setup(visual_anl_noise, nodes[n_i], vanode->get_output_port_for_preview());
-		// 	port_preview->set_h_size_flags(SIZE_SHRINK_CENTER);
-		// 	node->add_child(port_preview);
-		// }
 
 		String error = vanode->get_warning();
 		if (error != String()) {
@@ -692,14 +679,6 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_duplicate_nodes() {
 	}
 }
 
-// void VisualBrainTreeBehaviorTreeNodeComponentEditor::save_external_data() {
-
-// 	if (component.is_null())
-// 		return;
-
-// 	ResourceSaver::save(component->get_path(), component);
-// }
-
 void VisualBrainTreeBehaviorTreeNodeComponentEditor::_bind_methods() {
 
 	ClassDB::bind_method("_component_renamed", &VisualBrainTreeBehaviorTreeNodeComponentEditor::_component_renamed);
@@ -773,14 +752,7 @@ VisualBrainTreeBehaviorTreeNodeComponentEditor::VisualBrainTreeBehaviorTreeNodeC
 
 	undo_redo = EditorNode::get_singleton()->get_undo_redo();
 
-	// Ref<VisualBrainTreeBehaviorTreeNodePluginDefault> default_plugin;
-	// default_plugin = VisualBrainTreeBehaviorTreeNodePluginDefault(EditorNode::get_singleton());
-	// add_plugin(default_plugin);
-
-	// property_editor = memnew(CustomPropertyEditor);
-	// add_child(property_editor);
-
-	// property_editor->connect("variant_changed", this, "_port_edited");
+	component.instance();
 }
 
 ///////////////////////////////////
@@ -917,13 +889,3 @@ Control *VisualBrainTreeBehaviorTreeNodePluginDefault::create_editor(const Ref<V
 
 	return editor;
 }
-
-// void VisualBrainTreeBehaviorTreeNodeComponentEditor::_on_noise_changed() {
-
-// 	Ref<VisualBrainTreeBehaviorTreeNodeComponent> component = visual_anl_noise->get_component();
-
-// 	if (component.is_valid()) {
-// 		component = component;
-// 		_update_graph();
-// 	}
-// }
