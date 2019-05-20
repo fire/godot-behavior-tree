@@ -1,7 +1,7 @@
 #ifndef GODOTBRAINTREEACTION_H
 #define GODOTBRAINTREEACTION_H
 
-#include "BrainTree.h"
+#include "../thirdparty/braintree/BrainTree.h"
 #include "../brain_tree_behavior_tree.h"
 
 class GodotBrainTreeAction : public BrainTree::Node {

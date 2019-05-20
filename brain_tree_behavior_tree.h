@@ -2,7 +2,7 @@
 #define BRAIN_TREE_BEHAVIOUR_TREE_H
 
 #include "scene/main/node.h"
-#include "src/BrainTree.h"
+#include "thirdparty/braintree/BrainTree.h"
 
 class BrainTreeBehaviorTree : public Resource {
 	GDCLASS(BrainTreeBehaviorTree, Resource);
