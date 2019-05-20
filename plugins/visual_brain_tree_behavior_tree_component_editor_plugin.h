@@ -19,6 +19,8 @@ protected:
 
 public:
 	virtual Control *create_editor(const Ref<VisualBrainTreeBehaviorTreeNode> &p_node);
+	VisualBrainTreeBehaviourTreeNodePlugin(EditorNode *p_node) {}
+	~VisualBrainTreeBehaviourTreeNodePlugin() {}
 };
 
 class VisualBrainTreeBehaviorTreeNodePluginDefault : public VisualBrainTreeBehaviourTreeNodePlugin {

@@ -142,6 +142,7 @@ BrainTree::Node::Ptr BrainTreeBehaviorTree::getFromDict(Dictionary in_dict) {
 			return NULL;
 		} break;
 	}
+	return NULL;
 }
 
 Vector<int> BrainTreeBehaviorTree::get_status() const {
