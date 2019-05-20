@@ -42,9 +42,10 @@ The return values must be one of those:
 # Running the GBT
 
 When you are running the GBT in realtime, you can select the GBT in the remote inspector and click the BrainTree/inspect to set it to true.
+
 This will bring up the in the game window a GraphEdit node with the Tree (identical to the one you were editing)
-T
-he color of the connections are changed according to the status of the nodes.
+
+The color of the connections are changed according to the status of the nodes.
 
 * White is Invalid
 * Blue is Success
