@@ -13,6 +13,7 @@ func _enter_tree():
 	brainttree_button = add_control_to_bottom_panel(braintree_edit, "BrainTree")
 	brainttree_button.hide()
 	get_editor_interface().get_selection().connect("selection_changed", self, "on_selection_changed")
+
 func _exit_tree():
 	#apply_changes()
 	remove_custom_type("BrainTree")

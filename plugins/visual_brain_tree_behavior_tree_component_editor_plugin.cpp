@@ -169,7 +169,7 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_update_graph() {
 
 		node->connect("dragged", this, "_node_dragged", varray(nodes[n_i]));
 
-		if (VisualBrainTreeBehaviorTreeEditor::get_singleton()->can_edit(vanode)) { // it's a component
+		if (VisualBrainTreeBehaviorTreeNodeComponentEditor::get_singleton()->can_edit(vanode)) { // it's a component
 
 			Ref<VisualBrainTreeBehaviorTreeNodeComponent> comp = vanode;
 
@@ -346,8 +346,8 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_component_renamed(const St
 	undo_redo->add_undo_method(comp.ptr(), "set_component_name", prev_name);
 	undo_redo->add_do_method(this, "_update_graph");
 	undo_redo->add_undo_method(this, "_update_graph");
-	undo_redo->add_do_method(VisualBrainTreeBehaviorTreeEditor::get_singleton(), "_update_path"); // FIXME: should update button path
-	undo_redo->add_undo_method(VisualBrainTreeBehaviorTreeEditor::get_singleton(), "_update_path");
+	undo_redo->add_do_method(VisualBrainTreeBehaviorTreeNodeComponentEditor::get_singleton(), "_update_path"); // FIXME: should update button path
+	undo_redo->add_undo_method(VisualBrainTreeBehaviorTreeNodeComponentEditor::get_singleton(), "_update_path");
 	undo_redo->commit_action();
 	updating = false;
 
@@ -576,14 +576,6 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_node_selected(Object *p_no
 	EditorNode::get_singleton()->push_item(vanode.ptr(), "", true);
 }
 
-void VisualBrainTreeBehaviorTreeNodeComponentEditor::_open_in_editor(int p_which) {
-
-	Ref<VisualBrainTreeBehaviorTreeNodeComponent> comp = component->get_node(p_which);
-	ERR_FAIL_COND(!comp.is_valid());
-
-	VisualBrainTreeBehaviorTreeEditor::get_singleton()->enter_editor(p_which);
-}
-
 void VisualBrainTreeBehaviorTreeNodeComponentEditor::_input(const Ref<InputEvent> p_event) {
 
 	if (graph->has_focus()) {
@@ -718,7 +710,6 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_bind_methods() {
 	ClassDB::bind_method("_connection_request", &VisualBrainTreeBehaviorTreeNodeComponentEditor::_connection_request);
 	ClassDB::bind_method("_disconnection_request", &VisualBrainTreeBehaviorTreeNodeComponentEditor::_disconnection_request);
 	ClassDB::bind_method("_node_selected", &VisualBrainTreeBehaviorTreeNodeComponentEditor::_node_selected);
-	ClassDB::bind_method("_open_in_editor", &VisualBrainTreeBehaviorTreeNodeComponentEditor::_open_in_editor);
 	ClassDB::bind_method("_scroll_changed", &VisualBrainTreeBehaviorTreeNodeComponentEditor::_scroll_changed);
 	ClassDB::bind_method("_delete_request", &VisualBrainTreeBehaviorTreeNodeComponentEditor::_delete_request);
 	ClassDB::bind_method("_node_changed", &VisualBrainTreeBehaviorTreeNodeComponentEditor::_node_changed);
@@ -734,7 +725,7 @@ void VisualBrainTreeBehaviorTreeNodeComponentEditor::_bind_methods() {
 
 VisualBrainTreeBehaviorTreeNodeComponentEditor *VisualBrainTreeBehaviorTreeNodeComponentEditor::singleton = NULL;
 
-VisualBrainTreeBehaviorTreeNodeComponentEditor::VisualBrainTreeBehaviorTreeNodeComponentEditor() {
+VisualBrainTreeBehaviorTreeNodeComponentEditor::VisualBrainTreeBehaviorTreeNodeComponentEditor(EditorNode *p_editor, VisualBrainTreeBehaviorTreeEditorPlugin *p_plugin) {
 
 	singleton = this;
 	updating = false;

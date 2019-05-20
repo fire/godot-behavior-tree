@@ -31,6 +31,7 @@ public:
 	virtual Control *create_editor(const Ref<VisualBrainTreeBehaviorTreeNode> &p_node);
 };
 
+class VisualBrainTreeBehaviorTreeEditorPlugin;
 class VisualBrainTreeBehaviorTreeNodeComponentEditor : public VBoxContainer {
 	GDCLASS(VisualBrainTreeBehaviorTreeNodeComponentEditor, VBoxContainer);
 
@@ -81,8 +82,6 @@ class VisualBrainTreeBehaviorTreeNodeComponentEditor : public VBoxContainer {
 
 	void _scroll_changed(const Vector2 &p_scroll);
 	void _node_selected(Object *p_node);
-
-	void _open_in_editor(int p_which);
 
 	void _delete_request(int);
 
@@ -137,7 +136,7 @@ public:
 	bool can_edit(const Ref<VisualBrainTreeBehaviorTreeNodeComponent> &p_component);
 	void edit(const Ref<VisualBrainTreeBehaviorTreeNodeComponent> &p_component);
 
-	VisualBrainTreeBehaviorTreeNodeComponentEditor();
+	VisualBrainTreeBehaviorTreeNodeComponentEditor(EditorNode *p_editor, VisualBrainTreeBehaviorTreeEditorPlugin *p_plugin);
 };
 
 #endif
