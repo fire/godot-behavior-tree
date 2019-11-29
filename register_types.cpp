@@ -5,7 +5,7 @@
 #include "visual_brain_tree_behavior_tree.h"
 #include "visual_brain_tree_behavior_tree_nodes.h"
 
-void register_brain_tree_types() {
+void register_GodotBehaviorTree_types() {
 
 	ClassDB::register_class<BrainTreeBehaviorTree>();
 	ClassDB::register_class<VisualBrainTreeBehaviorTree>();
@@ -18,7 +18,7 @@ void register_brain_tree_types() {
 	EditorPlugins::add_by_type<VisualBrainTreeBehaviorTreeEditorPlugin>();
 }
 
-void unregister_brain_tree_types() {
+void unregister_GodotBehaviorTree_types() {
 
 	// nothing to do here
 }
